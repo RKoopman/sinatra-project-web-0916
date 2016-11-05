@@ -1,0 +1,6 @@
+<a href="/users/new">Add a User</a>
+<a href="/restaurants/new">Add a Restaurant</a>
+
+<% @users.each do |user| %>
+  <a href= "/users/<%=user.id%>" ><li><%= user.name %></li></a>
+<% end %>
