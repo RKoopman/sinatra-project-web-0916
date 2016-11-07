@@ -10,10 +10,9 @@ class RestaurantsController < ApplicationController
   end
 
   post '/restaurants' do
-    @restaurant = Restaurant.create(params[:restaurant])
-    @restaurant.name = params[:name]
-    @restaurant.rating = params[:rating]
-    @restaurant.address = params[:address]
+    @restaurant = Restaurant.create(params)
+    @user = User.create(params)
+    @restaurant.users << @user
     @restaurant.save
     redirect to "restaurants/#{@restaurant.id}"
   end
@@ -40,7 +39,6 @@ class RestaurantsController < ApplicationController
   delete '/restaurants/:id/delete' do
     @restaurant = Restaurant.find(params[:id])
     @restaurant.destroy
-    "#{@restaurant.name} has been deleted."
   end
 
 end

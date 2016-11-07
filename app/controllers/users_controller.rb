@@ -10,8 +10,11 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    @user = User.create(params)
-    redirect to "users/#{@user.id}"
+    @user = User.create(params)                 # create/ saves new instance of User record with params.
+    @restaurant = Restaurant.create(params)     # create/ saves new instance of Restaurant record with params.
+    @user.restaurants << @restaurant            # will add the newly created restaurant record to that users' collection of restaurants.
+    @user.save                                  # saves the updated user
+    redirect to "users/#{@user.id}"             # redirectes to that user's show page
   end
 
   get '/users/:id' do
@@ -34,7 +37,6 @@ class UsersController < ApplicationController
   delete '/users/:id/delete' do
     @user = User.find(params[:id])
     @user.destroy
-    "#{@user.name} has been deleted."
     redirect to '/users'
   end
 

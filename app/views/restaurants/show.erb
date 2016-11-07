@@ -5,14 +5,27 @@
     <title></title>
   </head>
   <body>
-    <a href="/restaurants/new">Add a Restaurant</a>
-    <a href="/users/new">Add a User</a>
+    <a href="/restaurants/new">Create New Restaurant</a>
+    <a href="/users/new">Create New User</a>
     <a href="/users">See All Users</a>
-    <label for="Name">Name:</label><p><%= @restaurant.name %></p>
     <br>
-    <label for="Rating">Rating:</label><p><%= @restaurant.rating %></p>
+    <label for="Name">Name:</label>  <%= @restaurant.name %>
     <br>
-    <label for="Address">Address:</label><p><%= @restaurant.address %></p>
+    <label for="Rating">Rating:</label>  <%= @restaurant.rating %>
+    <br>
+    <label for="Address">Address:</label>  <%= @restaurant.address %>
+    <br>
+    <br>
+    <form action="index/<%=@restaurant.id%>" method="post">
+      <label for="restaurant_users">Add User:</label>
+      <select name="user_list">
+        <%User.all.each do |user|%>
+          <option value="user.name"><%=user.name%></option>
+        <%end%>
+      </select>
+    </form>
+    <br>
+    <label for="Current Users">Current Users:</label>
 
   </body>
 </html>
