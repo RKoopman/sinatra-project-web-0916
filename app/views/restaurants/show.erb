@@ -9,23 +9,27 @@
     <a href="/users/new">Create New User</a>
     <a href="/users">See All Users</a>
     <br>
-    <label for="Name">Name:</label>  <%= @restaurant.name %>
+    <label for="Name">Name:</label>  <%= @restaurant.rest_name %>
     <br>
     <label for="Rating">Rating:</label>  <%= @restaurant.rating %>
     <br>
     <label for="Address">Address:</label>  <%= @restaurant.address %>
     <br>
     <br>
-    <form action="index/<%=@restaurant.id%>" method="post">
-      <label for="restaurant_users">Add User:</label>
-      <select name="user_list">
-        <%User.all.each do |user|%>
-          <option value="user.name"><%=user.name%></option>
-        <%end%>
-      </select>
+    <form action="/restaurants/<%=@restaurant.id%>" method="POST">
+        <select name="restaurants[user_id]" type="text">
+            <%User.all.each do |user|%>
+                <option value="<%=user.id%>"><%=user.user_name%></option>
+            <%end%>
+        </select>
+        <button type="submit" value="add">add to my list</button>
     </form>
     <br>
     <label for="Current Users">Current Users:</label>
+      <% @restaurant.users.each do |us| %>
+      <ul><%= us.user_name %></ul>
+      <% end %>
+
 
   </body>
 </html>

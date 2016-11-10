@@ -11,9 +11,7 @@ class RestaurantsController < ApplicationController
 
   post '/restaurants' do
     @restaurant = Restaurant.create(params)
-    @user = User.create(params)
-    @restaurant.users << @user
-    @restaurant.save
+
     redirect to "restaurants/#{@restaurant.id}"
   end
 
@@ -22,6 +20,14 @@ class RestaurantsController < ApplicationController
     erb :'restaurants/show'
   end
 
+  post '/restaurants/:id' do
+  # binding.pry
+  @restaurant = Restaurant.find(params[:id])
+  @user = User.find(params[:restaurants][:user_id])
+  @restaurant.users << @user
+  redirect to "/restaurants/#{@restaurant.id}"
+end
+
   get '/restaurants/:id/edit' do
     @restaurant = Restaurant.find(params[:id])
     erb :'restaurants/edit'
@@ -29,7 +35,7 @@ class RestaurantsController < ApplicationController
 
   patch '/restaurants/:id' do
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.name = params[:name]
+    @restaurant.rest_name = params[:rest_name]
     @restaurant.rating = params[:rating]
     @restaurant.address = params[:address]
     @restaurant.save

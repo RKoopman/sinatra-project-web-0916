@@ -10,11 +10,8 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    @user = User.create(params)                 # create/ saves new instance of User record with params.
-    @restaurant = Restaurant.create(params)     # create/ saves new instance of Restaurant record with params.
-    @user.restaurants << @restaurant            # will add the newly created restaurant record to that users' collection of restaurants.
-    @user.save                                  # saves the updated user
-    redirect to "users/#{@user.id}"             # redirectes to that user's show page
+    @user = User.create(params)                 
+    redirect to "users/#{@user.id}"
   end
 
   get '/users/:id' do
@@ -29,7 +26,7 @@ class UsersController < ApplicationController
 
   patch '/users/:id' do
     @user = User.find(params[:id])
-    @user.name = params[:name]
+    @user.user_name = params[:user_name]
     @user.save
     redirect to "/users/#{@user.id}"
   end

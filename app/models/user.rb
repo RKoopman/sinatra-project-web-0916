@@ -1,4 +1,3 @@
 class User < ActiveRecord::Base
-  has_many :user_restaurants
-  has_many :restaurants, through: :user_restaurants
+  has_and_belongs_to_many :restaurants
 end

@@ -9,10 +9,10 @@
   <input type="submit" value="Delete User">
 </form>
 <br>
-<h1><%= @user.name %></h1>
+<h1><%= @user.user_name %></h1>
 
 <br>
 <label for="Current Restaurants">Your Current Restaurant List:</label>
-  <ol>
-
-  </ol>
+    <% @user.restaurants.each do |rt| %>
+    <p><%= rt.rest_name %></p>
+    <% end %>
