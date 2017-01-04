@@ -25,10 +25,13 @@
         <button type="submit" value="add">add to my list</button>
     </form>
     <br>
-    <label for="Current Users">Current Users:</label>
-      <% @restaurant.users.each do |us| %>
+    <fieldset>
+      <legend>Current Users</legend>
+      <% @restaurant.users.uniq.each do |us| %>
       <ul><%= us.user_name %></ul>
       <% end %>
+    </fieldset>
+
 
 
   </body>

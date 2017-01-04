@@ -15,8 +15,12 @@ ActiveRecord::Schema.define(version: 3) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string  "rest_name"
+    t.string  "category"
     t.integer "rating"
+    t.string  "city"
     t.string  "address"
+    t.string  "image_url"
+    t.string  "website"
   end
 
   create_table "restaurants_users", force: :cascade do |t|

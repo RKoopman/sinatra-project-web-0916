@@ -1,5 +1,12 @@
 <a href="/users/new">Add a User</a>
 <a href="/restaurants/new">Add a Restaurant</a>
+<a href="/users">See All Users</a>
+
+
+<form  action="/users" method="get" >
+  <input type="text" placeholder="Find User..." name="user">
+  <input type="submit" value="submit">
+</form>
 
 <% @users.each do |user| %>
   <a href= "/users/<%=user.id%>" ><ul><%= user.user_name %></ul></a>

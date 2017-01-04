@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
 
   get '/users' do
-    @users = User.all
+
+    if params[:user]
+      @users = User.where("user_name like '%#{params[:user].downcase }%'")
+    else
+      @users = User.all
+    end
     erb :'users/index'
   end
 
@@ -10,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    @user = User.create(params)                 
+    @user = User.create(params[:user])
     redirect to "users/#{@user.id}"
   end
 
@@ -19,14 +24,24 @@ class UsersController < ApplicationController
     erb :'users/show'
   end
 
+
+  post '/users/:id' do
+  # binding.pry
+    @user = User.find(params[:id])
+    @rest = Restaurant.find(params[:users][:restaurant_id])
+    @user.restaurants << @rest
+    redirect to "/users/#{@user.id}"
+  end
+
   get '/users/:id/edit' do
     @user = User.find(params[:id])
     erb :'users/edit'
   end
 
   patch '/users/:id' do
+    # binding.pry
     @user = User.find(params[:id])
-    @user.user_name = params[:user_name]
+    @user.update(params[:user])
     @user.save
     redirect to "/users/#{@user.id}"
   end
@@ -36,7 +51,4 @@ class UsersController < ApplicationController
     @user.destroy
     redirect to '/users'
   end
-
-
-
 end

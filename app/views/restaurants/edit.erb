@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!Form will have to be deleted>
 <html>
   <head>
     <meta charset="utf-8">
@@ -9,10 +8,10 @@
     <form method="post" action="/restaurants/<%=@restaurant.id%>">
       <input id="hidden" type="hidden" name="_method" value="patch">
       <label for="restaurant_name">Name:</label>
-      <input type="text" value="<%=@restaurant.rest_name %>" name="name">
+      <input type="text" value="<%=@restaurant.rest_name %>" name="restaurant[rest_name]">
       <br>
       <label for="restaurant_rating">Rating:</label>
-      <select name="rating">
+      <select name="restaurant[rating]">
         <option value="5">5</option>
         <option value="4">4</option>
         <option value="3">3</option>
@@ -21,12 +20,15 @@
       </select>
       <br>
       <label for="restaurant_Address">Address:</label>
-      <input type="text" value="<%=@restaurant.address %>" name="address">
+      <input type="text" value="<%=@restaurant.address %>" name="restaurant[address]">
       <br>
 
           <br>
       <input type="submit" value="submit">
     </form>
-
+    <form action="/restaurants/<%=@restaurant.id%>/delete" method="post">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Restaurant">
+    </form>
   </body>
 </html>

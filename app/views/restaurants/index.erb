@@ -2,8 +2,27 @@
 <a href="/users/new">Add a User</a>
 <a href="/users">See All Users</a>
 
+
+<form  action="/restaurants" method="post" >
+  <label for="rest_name">Name:</label>
+  <input type="text" placeholder="Search" name="search_term">
+  <br>
+  <label for="rest_city"></label>
+  <input type="text" name="city" placeholder="Sparta!">
+  <br>
+  <label for="Rating">Rating:</label>
+  <select name="restaurant[rating]">
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+  </select>
+  <input type="submit" value="submit">
+</form>
+
 <% @restaurants.each do |rest| %>
-  <p>
+
     <a href= "/restaurants/<%=rest.id%>" ><li><%= rest.rest_name %></li></a>
-  </p>
+    <ol><%= rest.category%> | <%= rest.rating%> | <%= rest.city%></ol>
 <% end %>

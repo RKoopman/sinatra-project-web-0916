@@ -7,10 +7,10 @@ Watch the below clip to see basic functionality of app.
 
 <img src="/gifs/BasicSinatraApp.gif">
 
-- A user should be able to add a new user
++ A user should be able to add a new user
 + A user should be able to see all other users
 + A user should be able to add a restaurant
-- A user should be able to select a user and add it to a restaurant's list of users
++ A user should be able to select a user and add it to a restaurant's list of users
 
 ## Domain Modeling
 - What's the relationship between a user and a restaurant?
