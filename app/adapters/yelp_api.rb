@@ -4,13 +4,11 @@ class YelpApi
 
   def client
     Yelp::Client.new({
-      consumer_key: 'MPLSfYb5xV1AaqBo8WlNWw',
-      consumer_secret: 'tv_23gXJLbOisSEOtjIocapi4oY',
-      token: 'VHm6sjU8PSfADsehRf6nOZVV727mUYmm',
-      token_secret: 'CxQsBpCEMC7cvQxh1UpVw_IZzx0'
+
+      
       })
   end
-  
+
 
   # def yelp_restaurant_creator(response)
   #   restaurant = Restaurant.create
